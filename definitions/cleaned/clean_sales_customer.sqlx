@@ -1,0 +1,13 @@
+config {
+    type: "view"
+    , name: "clean-sales-customers"
+}
+
+SELECT
+  customerid AS customer_id,
+  customercategoryid AS customer_category_id,
+  customername AS customer_name,
+  accountopeneddate AS account_opened_date,
+  deliverypostalcode AS delivery_postal_code
+FROM
+  ${ref("sales-customers")}

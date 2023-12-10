@@ -1,0 +1,10 @@
+config {
+    type: "view"
+    , name: "clean-sales-customercategories"
+}
+
+SELECT
+  customercategoryid AS customer_category_id,
+  customercategoryname AS customer_category_name
+FROM
+  ${ref("sales-customercategories")}

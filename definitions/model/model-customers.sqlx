@@ -1,0 +1,33 @@
+config {
+    type: "view"
+    , name: "model-customers"
+}
+
+WITH
+  customer_cat AS (
+  SELECT
+    customer_category_id,
+    customer_category_name
+  FROM
+    ${ref("clean-sales-customercategories")} ),
+  customer AS (
+  SELECT
+    customer_id,
+    customer_category_id,
+    customer_name,
+    account_opened_date,
+    delivery_postal_code
+  FROM
+    ${ref("clean-sales-customers")} )
+SELECT
+  customer.customer_id,
+  customer.customer_name,
+  customer_cat.customer_category_name,
+  customer.account_opened_date,
+  customer.delivery_postal_code
+FROM
+  customer
+LEFT JOIN
+  customer_cat
+ON
+  customer.customer_category_id = customer_cat.customer_category_id
