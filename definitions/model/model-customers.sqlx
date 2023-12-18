@@ -9,7 +9,8 @@ WITH
     customer_category_id,
     customer_category_name
   FROM
-    ${ref("clean-sales-customercategories")} ),
+    ${ref("clean-sales-customercategories")} 
+  ),
   customer AS (
   SELECT
     customer_id,
